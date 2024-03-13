@@ -1,0 +1,26 @@
+<!-- products.html -->
+<sly data-sly-use.productList="com.splunk.service.impl.ProductListModel"
+     data-sly-use.categoryList="com.splunk.service.impl.CategoryListModel">
+
+    <h1>Products</h1>
+
+    <!-- Display categories as clickable links -->
+    <ul>
+        <li data-sly-list="${categoryList.categories}">
+            <a href="${'products.html?category=' + item}">${item}</a>
+        </li>
+    </ul>
+
+    <!-- Search bar goes here -->
+
+    <!-- Display products -->
+    <ul data-sly-list="${productList.products}">
+        <li>
+            <img src="${item.image}" alt="${item.productName}">
+            <h2>${item.productName}</h2>
+            <p>${item.getPriceWithCurrency}</p>
+            <p>${item.description}</p>
+        </li>
+    </ul>
+
+</sly>
